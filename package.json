@@ -1,0 +1,22 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "A node and mongo based rest api.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amany9000/ToDo-API.git"
+  },
+  "author": "amany9000",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amany9000/ToDo-API/issues"
+  },
+  "homepage": "https://github.com/amany9000/ToDo-API#readme",
+  "dependencies": {
+    "mongodb": "^3.0.6"
+  }
+}
