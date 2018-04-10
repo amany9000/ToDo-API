@@ -5,7 +5,7 @@ To Run
 ===
 * Install Mongo db and keep its server running on your localhost. 
 * Clone the repository.
-* ``` cd NodeTesting ```
+* ``` cd ToDo-API ```
 * Run - 
 ``` node
 npm install
