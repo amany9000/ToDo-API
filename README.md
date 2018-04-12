@@ -1,5 +1,5 @@
 # ToDo-API
-A node and mongodb based rest API.
+A node and mongodb based rest API. 
 
 To Run 
 ===
@@ -12,4 +12,5 @@ npm install
 node mongo-connect.js
 ```
 
+Note : The mongodb functionality is implemented in ```server.js``` through the Mongoose ORM	.
 
