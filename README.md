@@ -3,7 +3,7 @@ A node and mongodb based rest API.
 
 To Run 
 ===
-* Install Mongo db and keep its server running on your localhost. 
+* Install Mongo db and keep its server running on a different terminal on your localhost. 
 * Clone the repository.
 * ``` cd ToDo-API ```
 * Run - 
