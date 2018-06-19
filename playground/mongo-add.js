@@ -19,9 +19,9 @@ MongoClient.connect("mongodb://localhost:27017/",(err,db) => {
 		});
 		dbo.collection("Users").insert([{
 		_id : id,
-		name : "Darth Vader",
+		name : "That psycho girl from Gone Girl",
 		age : 48,
-		location : "Death Star"
+		location : "WachoLAND"
 	},{
 		name : "Master Yoda",
 		age : 900,
