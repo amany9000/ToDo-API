@@ -12,4 +12,11 @@ npm install
 node mongo-connect.js
 ```
 
-Note : The mongodb functionality is implemented in ```server.js``` through the Mongoose ORM and the API requests are handled through express. 
+Notes : The mongodb functionality is implemented in ```server.js``` through the Mongoose ORM and the API requests are handled through express. 
+
+## To test
+* Run - 
+``` node 
+npm run testIt
+```
+* Testing uses mocha and supertest modules.
