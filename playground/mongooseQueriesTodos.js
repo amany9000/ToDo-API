@@ -10,14 +10,17 @@ if(!ObjectID.isValid(id)) {
 	console.log("ID not valid");
 }
 
-todo.find({                                       
-	_id : id
+todo.find({                           // Returns a list of all todos                   
+	_id : id                          // that meet the criterion 
 }).then((todos) => {
+	if(todos.length == 0){
+		return console.log("No Todos found");
+	}
 	console.log('Todos', todos);
-});
+}).catch((e) => {console.log(e)});
 
-todo.findOne({
-	_id : id
+todo.findOne({                        //Returns the first todo that 
+	_id : id                          // meets the criterion
 }).then((todo) => {
 	if(!todo){
 		return console.log("Todo not found");
@@ -25,8 +28,8 @@ todo.findOne({
 	console.log('Todo', todo);
 }).catch((e) => {console.log(e)});
 
-todo.findById(id).then((todo) => {
-	if(!todo){
+todo.findById(id).then((todo) => {          //Returns the first todo that 
+	if(!todo){                              //meets the Id
 		return console.log("Id not found");
 	}
 	console.log('Todo by Id', todo);
