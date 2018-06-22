@@ -1,12 +1,15 @@
 var expect = require("expect")
 var request = require("supertest")
+const {ObjectID} = require("mongodb");
 
 var app = require("./../server.js").app
 var todo = require("./../models/todo.js").todo
 
 const testTodos = [{
+	_id  :  new ObjectID(), 
 	text : 'The destruction of of the ONE Ring'
 },{
+	_id  :  new ObjectID(), 
 	text : 'Picking up some ice cream after that'	
 }] 
 beforeEach((done) => {
@@ -62,4 +65,32 @@ describe('GET /todos', () => {
 			})
 			.end(done);
 	})
+})
+
+describe('GET /todos/:id', () =>{
+	it("should return a todo doc" , (done) => {
+		request(app)
+			.get(`/todos/${testTodos[0]._id.toHexString()}`)
+			.expect(200)
+			.expect((res) => {
+				expect(res.body.todo.text).toBe(testTodos[0].text);
+			})
+			.end(done);
+	});
+
+	it("should return a 404" , (done) => {
+		const idString = new ObjectID().toHexString();
+		request(app)
+			.get(`/todos/${idString}`)
+			.expect(404)
+			.end(done);
+	});
+
+	it("should return a 404" , (done) => {
+		request(app)
+			.get(`/todos/123`)
+			.expect(404)
+			.end(done);
+	});	
+
 })
