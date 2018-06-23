@@ -30,7 +30,7 @@ todo.findOne({                        //Returns the first todo that
 
 todo.findById(id).then((todo) => {          //Returns the first todo that 
 	if(!todo){                              //meets the Id
-		return console.log("Id not found");
+		return console.log("Todo Id not found");
 	}
 	console.log('Todo by Id', todo);
 }).catch((e) => {console.log(e)});
