@@ -4,12 +4,16 @@
   "description": "A node and mongo based rest api.",
   "main": "index.js",
   "scripts": {
+    "start" : "node server/server.js",
     "test": "mocha server/**/*.test.js",
     "testIt": "nodemon --exec 'npm test'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amany9000/ToDo-API.git"
+  },
+  "engines" : {
+    "node" : "10.5.0"
   },
   "author": "amany9000",
   "license": "ISC",
