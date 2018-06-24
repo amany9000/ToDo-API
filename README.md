@@ -11,9 +11,9 @@ To Run
 npm install
 node mongo-connect.js
 ```
-
-Notes : The mongodb functionality is implemented in ```server.js``` through the Mongoose ORM and the API requests are handled through express. 
-
+#Notes 
+* The mongodb functionality is implemented in ```server.js``` through the Mongoose ORM and the API requests are handled through express. 
+* The API has been deployed at Heroku, here is the <a href = "https://polar-garden-35382.herokuapp.com/"> link</a>.
 ## To test
 * Run - 
 ``` node 
