@@ -87,9 +87,8 @@ app.patch("/todos/:id", (req,res) => {
 })
 
 app.post("/users", (req,res) => {
-	var User = new user({
-		email : req.body.email
-	});
+	var body = _.pick(req.body, ["email", "password"]);
+	var User = new user(body);
 	User.save().then((doc) => {
 		res.send(doc);
 	}, (e) => {

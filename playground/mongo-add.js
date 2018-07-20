@@ -17,6 +17,7 @@ MongoClient.connect("mongodb://localhost:27017/",(err,db) => {
 			}
 			console.log(JSON.stringify(result.ops,undefined,2));
 		});
+		
 		dbo.collection("Users").insert([{
 		_id : id,
 		name : "That psycho girl from Gone Girl",
