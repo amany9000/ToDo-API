@@ -89,11 +89,13 @@ app.patch("/todos/:id", (req,res) => {
 app.post("/users", (req,res) => {
 	var body = _.pick(req.body, ["email", "password"]);
 	var User = new user(body);
-	User.save().then((doc) => {
-		res.send(doc);
-	}, (e) => {
+	User.save().then(() => {
+		return User.generateAuthTokens();
+	}).then((token) => {
+		res.header("x-auth", token).send(User);
+	}).catch((e) => {
 		res.status(400).send(e);
-	})
+	});
 });
 
 app.listen(port, ()=> {
