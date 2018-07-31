@@ -48,6 +48,23 @@ UserSchema.methods.generateAuthTokens = function (){
 		return token;
 	})
 }
+
+UserSchema.statics.findByToken = function (token){
+	var User = this;
+	var returnedToken;
+	try {
+		returnedToken = jwt.verify(token, "secret"); 
+	}
+	catch (e){
+		return Promise.reject();
+	}
+	return user.findOne({
+		'_id' : returnedToken._id,
+		'tokens.token' : token,
+		'tookens.access' : 'auth'
+	})
+}	
+
 var user = mongoose.model('User', UserSchema);
 
 module.exports = {user};
