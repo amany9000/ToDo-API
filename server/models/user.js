@@ -50,18 +50,20 @@ UserSchema.methods.generateAuthTokens = function (){
 }
 
 UserSchema.statics.findByToken = function (token){
-	var User = this;
+	var user = this;
 	var returnedToken;
+	console.log(typeof(token))
 	try {
 		returnedToken = jwt.verify(token, "secret"); 
 	}
 	catch (e){
 		return Promise.reject();
 	}
+	console.log("ret",returnedToken)
 	return user.findOne({
 		'_id' : returnedToken._id,
 		'tokens.token' : token,
-		'tookens.access' : 'auth'
+		'tokens.access' : 'auth'
 	})
 }	
 
