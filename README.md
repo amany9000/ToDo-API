@@ -20,4 +20,5 @@ node server/server.js
 ``` node 
 npm test
 ```
+* Securityand Authentication is enabled using jsonwebtoken, validator and bcrypt npm libraries. 
 * Testing uses mocha and supertest modules.
