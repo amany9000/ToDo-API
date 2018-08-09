@@ -4,7 +4,7 @@ const {ObjectID} = require("mongodb");
 
 var app = require("./../server.js").app
 var todo = require("./../models/todo.js").todo
-var {testTodos, populateTodos} = require("./seed/seed.js") 
+var {testTodos, populateTodos, users, populateUsers} = require("./seed/seed.js") 
 beforeEach(populateTodos);
 
 describe("Post /todos", () => {
