@@ -23,9 +23,9 @@ const users = [{
 	_id: userOneId,
 	email: "testOne@gmail.com",
 	password: "Pass1",
-	token: [{
+	tokens: [{
 		access: "auth",
-		token: jwt.sign({_id: userOneId, access: "auth"}, "abc123").toString()
+		token: jwt.sign(JSON.stringify({_id: userOneId.toHexString(), access: "auth"}, undefined, 2), "secret")
 	}] 
 },{
 	_id: userTwoId,
@@ -35,8 +35,8 @@ const users = [{
 
 const populateUsers = (done) => {
 	user.remove({}).then(() => {
-		var userOne = new User(users[0]).save();
-		var userTwo = new User(users[1]).save();
+		var userOne = new user(users[0]).save();
+		var userTwo = new user(users[1]).save();
 
 		return Promise.all([userOne, userTwo])		
 	}).then(() => done());

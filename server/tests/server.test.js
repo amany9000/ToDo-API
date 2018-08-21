@@ -4,8 +4,11 @@ const {ObjectID} = require("mongodb");
 
 var app = require("./../server.js").app
 var todo = require("./../models/todo.js").todo
+var {user} = require("./../models/user.js")
 var {testTodos, populateTodos, users, populateUsers} = require("./seed/seed.js") 
+
 beforeEach(populateTodos);
+beforeEach(populateUsers);
 
 describe("Post /todos", () => {
 	it("should create a new todo", (done) => {
@@ -162,4 +165,29 @@ describe("Patch /todos:id", () => {
 			})
 			.end(done)
 	});
+})
+
+describe("Get /users/me", () => {
+	it("should return user if authenticated", (done) => {
+		var id = users[0]._id;
+		request(app)
+			.get('/users/me')
+			.set('x-auth', users[0].tokens[0].token,undefined,2)
+			.expect(200)
+			.expect((res) => {
+				expect(res.body._id).toBe(users[0]._id.toHexString());
+				expect(res.body.email).toBe(users[0].email)
+			})
+			.end(done);	
+	});
+
+	it("should return 401 if not authenticated", (done) => {
+		request(app)
+			.get("/users/me")
+			.expect(401)
+			.expect((res) => {
+				expect((res.body)).toEqual({});
+			})
+			.end(done)
+	})
 })

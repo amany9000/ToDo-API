@@ -43,8 +43,9 @@ UserSchema.methods.toJSON = function () {
 UserSchema.methods.generateAuthTokens = function (){
 	var user = this;
 	var access = "auth";
-	var token = jwt.sign({_id: user._id.toHexString(), access},"secret").toString();
+	var token = jwt.sign(JSON.stringify({_id: user._id.toHexString(), access},undefined,2),"secret").toString();
 	user.tokens.push({access, token});
+	
 	return user.save().then(() => {
 		return token;
 	})
@@ -53,14 +54,15 @@ UserSchema.methods.generateAuthTokens = function (){
 UserSchema.statics.findByToken = function (token){
 	var user = this;
 	var returnedToken;
-	console.log(typeof(token))
+	//console.log("user,js",typeof(token),token)
 	try {
 		returnedToken = jwt.verify(token, "secret"); 
 	}
 	catch (e){
+		//console.log("shiiiiiiiiiit",e)		
 		return Promise.reject();
 	}
-	console.log("ret",returnedToken)
+	//console.log("ret",returnedToken)
 	return user.findOne({
 		'_id' : returnedToken._id,
 		'tokens.token' : token,
