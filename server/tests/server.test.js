@@ -167,7 +167,7 @@ describe("Patch /todos:id", () => {
 	});
 })
 
-describe("Get /users/me", () => {
+describe("GET /users/me", () => {
 	it("should return user if authenticated", (done) => {
 		var id = users[0]._id;
 		request(app)
@@ -190,4 +190,54 @@ describe("Get /users/me", () => {
 			})
 			.end(done)
 	})
+});
+
+describe("POST /users", () => {
+	it("should create a new user", (done) => {
+		var email = "heetHacker@gmail.com";
+		var password = "dilonKaCracker";
+		
+		request(app)
+			.post("/users")
+			.send({email,password})
+			.expect(200)
+			.expect((res) => {
+				expect(res.headers["x-auth"]).toBeDefined();
+				expect(res.body._id).toBeDefined();
+				expect(res.body.email).toBe(email)
+			})
+			.end((err) => {
+				if(err){
+					return done(err)
+				}
+				user.findOne({email}).then((user) => {
+					expect(user).toBeDefined();
+					expect(user.password).not.toBe(password);
+					done();
+				});
+			});
+	});
+
+	it("should return validation errors if request invalid", (done) => {
+		request(app)
+			.post("/users")
+			.send({
+				email: "ans",
+				password: "123"
+			})
+			.expect(400)
+			.end(done)
+	});
+
+	it("should not create user if email in use", (done) => {
+		request(app)
+			.post("/users")
+			.send({
+				email: users[0].email,
+				password: users[0].password
+			})
+			.expect(400)
+			.end(done);
+	});
+
 })
