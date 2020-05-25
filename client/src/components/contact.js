@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Contact = () => {
@@ -7,11 +8,11 @@ const Contact = () => {
     }, 6000)
 
     return (
-        <div classname="container">
+		<ul className="collection">
             <h4 className="center">Contact</h4>
-            <p className="container"> amany9000 on ALL websites, apps etc.</p>
-            <p className="container"> You are going to be directed to my linkedin, feel free to connect, adios.</p>
-        </div>
+            <p className="container center"> <strong>amany9000</strong> on ALL websites, apps etc.</p>
+            <p className="container center"> You are going to be directed to my linkedin, feel free to connect, adios.</p>
+        </ul>
     )
 }
 

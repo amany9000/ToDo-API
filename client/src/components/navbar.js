@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <nav className="nav-wrapper red darken-3">
+        <nav className="nav-wrapper teal lighten-1">
             <div className="container">
                 <a href="#" className="brand-logo">Schedule</a>
                 <ul className="right">
