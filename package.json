@@ -26,7 +26,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "mongodb": "^3.0.6",
     "mongoose": "^5.0.14",
     "validator": "^10.4.0"
