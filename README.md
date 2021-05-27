@@ -14,7 +14,7 @@ node server/server.js
 ```
 ## Notes 
 * The mongodb functionality is implemented in ```server.js``` through the Mongoose ORM and the API requests are handled through express. 
-* The API has been deployed at Heroku, here is the <a href = "https://polar-garden-35382.herokuapp.com/"> link</a>.
+* The API has been deployed at Heroku, here is the <a href = "https://polar-garden-35382.herokuapp.com/todos"> link</a>.
 ## To test
 * Run - 
 ``` node 
